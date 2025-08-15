@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiwilasi - ცენტრალური გვერდი</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .nav-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .nav-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">🌟 WIWILASI 🌟</h1>
+        <p class="subtitle">თქვენი ციფრული სამყაროს ცენტრალური გვერდი</p>
+        
+        <div class="nav-grid">
+            <div class="nav-card">
+                <div class="icon">🎨</div>
+                <h3>ვან გოგის მუზეუმი</h3>
+                <p>ისაუბრეთ დიდი მხატვრის შედევრებთან ციფრული მუზეუმის ვირტუალურ სივრცეში</p>
+                <a href="van_gogh_museum.html" class="nav-link">მუზეუმში შესვლა</a>
+            </div>
+            
+            <div class="nav-card">
+                <div class="icon">📝</div>
+                <h3>ნინის გვერდი</h3>
+                <p>მარტივი გადამისამართების გვერდი სპეციალური ინფორმაციისთვის</p>
+                <a href="redirect.html" class="nav-link">ნინის ნახვა</a>
+            </div>
+            
+            <div class="nav-card">
+                <div class="icon">🚀</div>
+                <h3>ახალი პროექტები</h3>
+                <p>მალე დაემატება ახალი საინტერესო პროექტები და აპლიკაციები</p>
+                <a href="#" class="nav-link" onclick="alert('მალე დაემატება!')">მალე</a>
+            </div>
+            
+            <div class="nav-card">
+                <div class="icon">💻</div>
+                <h3>GitHub რეპოზიტორი</h3>
+                <p>ნახეთ ყველა პროექტის კოდი და განვითარების პროცესი</p>
+                <a href="https://github.com/Djangliori/wiwila" target="_blank" class="nav-link">GitHub-ზე ნახვა</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Wiwilasi - ციფრული შემოქმედების სივრცე</p>
+            <p>შექმნილია Claude Code-ით ❤️</p>
+        </div>
+    </div>
+</body>
+</html>
