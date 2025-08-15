@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ვან გოგის ციფრული მუზეუმი</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a5acd, #483d8b, #4b0082);
+            font-family: 'Arial Black', Arial, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .info-section {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #9370db;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #dda0dd;
+        }
+
+        .info-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .registration-form {
+            background: rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 20px;
+            border: 4px solid #8b7ade;
+        }
+
+        .form-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #dda0dd;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 3px solid #9370db;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.9);
+            color: #4b0082;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #dda0dd;
+            box-shadow: 0 0 15px rgba(221,160,221,0.5);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #9370db, #8b7ade);
+            color: white;
+            border: 3px solid #dda0dd;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #4b0082, #6a5acd);
+            color: white;
+            border: 3px solid #9370db;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .features {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #9370db;
+            margin-top: 40px;
+        }
+
+        .features-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            color: #dda0dd;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #8b7ade;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #dda0dd;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">ვან გოგის ციფრული მუზეუმი</h1>
+            <h2 class="subtitle">ხელოვნების ვირტუალური სამყარო</h2>
+        </header>
+
+        <div class="content-grid">
+            <div class="info-section">
+                <h2 class="section-title">მუზეუმის შესახებ</h2>
+                <p class="info-text">ვინსენტ ვან გოგის ციფრული მუზეუმი არის ინოვაციური ვირტუალური სივრცე, სადაც თქვენ შეგიძლიათ მოისაუბროთ დიდი მხატვრის შედევრებთან.</p>
+                <p class="info-text">ჩვენი კოლექცია მოიცავს 900-ზე მეტ ნამუშევარს, რომლებიც წარმოდგენილია 4K გარჩევადობით და ვირტუალური რეალობის ტექნოლოგიით.</p>
+                <p class="info-text">გამოიცადეთ ხელოვნება ისე, როგორც არასდროს ყოფილა - დააკვირდით ყოველ ფერადს და გრძნობათა სიღრმეს ვან გოგის ნამუშევრებში.</p>
+            </div>
+
+            <div class="registration-form">
+                <h2 class="form-title">რეგისტრაცია</h2>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">სახელი</label>
+                        <input type="text" class="form-input" placeholder="შეიყვანეთ თქვენი სახელი">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">გვარი</label>
+                        <input type="text" class="form-input" placeholder="შეიყვანეთ თქვენი გვარი">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ელ. ფოსტა</label>
+                        <input type="email" class="form-input" placeholder="შეიყვანეთ ელ. ფოსტა">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">პაროლი</label>
+                        <input type="password" class="form-input" placeholder="შექმენით პაროლი">
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-primary">რეგისტრაცია</button>
+                        <button type="button" class="btn btn-secondary">გაუქმება</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2 class="features-title">მუზეუმის თვისებები</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3 class="feature-title">VR ექსპერიენსი</h3>
+                    <p class="info-text">სრული იმერსიული გამოცდილება ვირტუალური რეალობის ტექნოლოგიით.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">4K გარჩევადობა</h3>
+                    <p class="info-text">უმაღლესი ხარისხის ვიზუალური ხელოვნების ნიმუშები.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">ინტერაქტიული ტურები</h3>
+                    <p class="info-text">გადაბარგება მხატვრის ცხოვრებასა და შემოქმედებაში.</p>
+                </div>
+                <div class="feature-item">
+                    <h3 class="feature-title">ხელოვნების ისტორია</h3>
+                    <p class="info-text">სრული ინფორმაცია ყოველი ნამუშევრის შექმნის შესახებ.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
