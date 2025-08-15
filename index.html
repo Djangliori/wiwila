@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiwilasi - ცენტრალური გვერდი</title>
+    <title>წიწილას სამყარო - Wiwila's World</title>
     <style>
         * {
             margin: 0;
@@ -12,20 +12,59 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 50%, #ff9800 100%);
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            overflow-x: hidden;
         }
 
-        .container {
+        .header {
             text-align: center;
-            max-width: 800px;
             padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .flying-chicks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .chick {
+            position: absolute;
+            font-size: 2rem;
+            animation: fly 15s linear infinite;
+        }
+
+        .chick:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .chick:nth-child(2) { top: 40%; animation-delay: 3s; }
+        .chick:nth-child(3) { top: 60%; animation-delay: 6s; }
+        .chick:nth-child(4) { top: 80%; animation-delay: 9s; }
+
+        @keyframes fly {
+            0% {
+                left: -100px;
+                transform: translateY(0px);
+            }
+            25% {
+                transform: translateY(-20px);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+            75% {
+                transform: translateY(-10px);
+            }
+            100% {
+                left: 100vw;
+                transform: translateY(0px);
+            }
         }
 
         .main-title {
@@ -34,55 +73,148 @@
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 2px;
+            color: #ff6f00;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .subtitle {
             font-size: 1.5rem;
-            margin-bottom: 50px;
-            opacity: 0.9;
-            font-weight: 300;
+            margin-bottom: 20px;
+            color: #e65100;
+            font-weight: 600;
         }
 
-        .nav-grid {
+        .chick-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 5px solid #ff6f00;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: url('https://images.unsplash.com/photo-1527875120850-51fe0b36b50b?w=200&h=200&fit=crop&crop=center') center/cover;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(255,111,0,0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
-        .nav-card {
-            background: rgba(255, 255, 255, 0.1);
+        .chick-card {
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
+            border: 2px solid #ff9800;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        .chick-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
         }
 
-        .nav-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #fff;
+        .chick-card:hover::before {
+            animation: shine 0.6s ease-in-out;
         }
 
-        .nav-card p {
+        @keyframes shine {
+            0% {
+                top: -50%;
+                left: -50%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                top: 50%;
+                left: 50%;
+                opacity: 0;
+            }
+        }
+
+        .chick-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255,152,0,0.3);
+            border-color: #ff6f00;
+        }
+
+        .card-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid #ff9800;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #e65100;
+        }
+
+        .card-description {
             font-size: 1rem;
             line-height: 1.6;
-            opacity: 0.9;
+            color: #bf360c;
             margin-bottom: 20px;
         }
 
-        .nav-link {
+        .card-link {
             display: inline-block;
             padding: 12px 25px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(45deg, #ff9800, #ff6f00);
             color: white;
             text-decoration: none;
             border-radius: 25px;
@@ -93,24 +225,30 @@
             font-size: 0.9rem;
         }
 
-        .nav-link:hover {
-            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+        .card-link:hover {
+            background: linear-gradient(45deg, #ff6f00, #e65100);
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .footer {
-            margin-top: 50px;
-            padding: 20px;
             text-align: center;
-            opacity: 0.7;
-            font-size: 0.9rem;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid #ff9800;
         }
 
-        .icon {
-            font-size: 3rem;
+        .footer h3 {
+            font-size: 1.8rem;
+            color: #e65100;
             margin-bottom: 20px;
-            opacity: 0.8;
+        }
+
+        .footer p {
+            color: #bf360c;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 768px) {
@@ -118,51 +256,69 @@
                 font-size: 2.5rem;
             }
             
-            .nav-grid {
+            .gallery {
                 grid-template-columns: 1fr;
+            }
+            
+            .chick-photo {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="flying-chicks">
+        <div class="chick">🐣</div>
+        <div class="chick">🐤</div>
+        <div class="chick">🐥</div>
+        <div class="chick">🐣</div>
+    </div>
+
+    <div class="header">
+        <h1 class="main-title">🐣 წიწილას სამყარო 🐤</h1>
+        <p class="subtitle">კეთილი იყოს წიწილების ბუნებრივი სამყაროში თქვენი მობრძანება!</p>
+        <div class="chick-photo"></div>
+        <p style="color: #e65100; font-weight: 600;">ყველაზე საყვარელი წიწილების კოლექცია</p>
+    </div>
+
     <div class="container">
-        <h1 class="main-title">🌟 WIWILASI 🌟</h1>
-        <p class="subtitle">თქვენი ციფრული სამყაროს ცენტრალური გვერდი</p>
-        
-        <div class="nav-grid">
-            <div class="nav-card">
-                <div class="icon">🎨</div>
-                <h3>ვან გოგის მუზეუმი</h3>
-                <p>ისაუბრეთ დიდი მხატვრის შედევრებთან ციფრული მუზეუმის ვირტუალურ სივრცეში</p>
-                <a href="van_gogh_museum.html" class="nav-link">მუზეუმში შესვლა</a>
+        <div class="gallery">
+            <div class="chick-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1548239854-a79c75b6e33a?w=150&h=150&fit=crop&crop=center');"></div>
+                <h3 class="card-title">🐤 ყვითელი წიწილა</h3>
+                <p class="card-description">ყველაზე საყვარელი და საყვარელი პატარა წიწილა რომელიც ყოველთვის მხიარული და ენერგიული იყოს!</p>
+                <a href="redirect.html" class="card-link">ნახვა</a>
             </div>
             
-            <div class="nav-card">
-                <div class="icon">📝</div>
-                <h3>ნინის გვერდი</h3>
-                <p>მარტივი გადამისამართების გვერდი სპეციალური ინფორმაციისთვის</p>
-                <a href="redirect.html" class="nav-link">ნინის ნახვა</a>
+            <div class="chick-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1601656813093-b3b5d1c96e65?w=150&h=150&fit=crop&crop=center');"></div>
+                <h3 class="card-title">🐣 ახალი წიწილებები</h3>
+                <p class="card-description">ტკბილი ახალშობილი წიწილები რომლებიც ყოველდღე იზრდებიან და უფრო ლამაზები ხდებიან!</p>
+                <a href="van_gogh_museum.html" class="card-link">მუზეუმი</a>
             </div>
             
-            <div class="nav-card">
-                <div class="icon">🚀</div>
-                <h3>ახალი პროექტები</h3>
-                <p>მალე დაემატება ახალი საინტერესო პროექტები და აპლიკაციები</p>
-                <a href="#" class="nav-link" onclick="alert('მალე დაემატება!')">მალე</a>
+            <div class="chick-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1563281643-cc851db35ac9?w=150&h=150&fit=crop&crop=center');"></div>
+                <h3 class="card-title">🐥 ოჯახური წიწილები</h3>
+                <p class="card-description">ბედნიერი წიწილების ოჯახი რომლებიც ერთად ყოველდღე თამაშობენ და სწავლობენ!</p>
+                <a href="#" class="card-link" onclick="alert('🐤 წიწილები გიყვარან! 🐤')">თამაში</a>
             </div>
             
-            <div class="nav-card">
-                <div class="icon">💻</div>
-                <h3>GitHub რეპოზიტორი</h3>
-                <p>ნახეთ ყველა პროექტის კოდი და განვითარების პროცესი</p>
-                <a href="https://github.com/Djangliori/wiwila" target="_blank" class="nav-link">GitHub-ზე ნახვა</a>
+            <div class="chick-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1597297915379-8d6ab2ad6534?w=150&h=150&fit=crop&crop=center');"></div>
+                <h3 class="card-title">🌱 წიწილების სპორტი</h3>
+                <p class="card-description">სპორტული წიწილები რომლებიც ყოველდღე ვარჯიშობენ და ჯანმრთელ ცხოვრებას ეწევიან!</p>
+                <a href="https://github.com/Djangliori/wiwila" target="_blank" class="card-link">კოდი</a>
             </div>
         </div>
-        
-        <div class="footer">
-            <p>© 2025 Wiwilasi - ციფრული შემოქმედების სივრცე</p>
-            <p>შექმნილია Claude Code-ით ❤️</p>
-        </div>
+    </div>
+
+    <div class="footer">
+        <h3>🐣 წიწილების სახლი 🐤</h3>
+        <p>ყველა წიწილა ბედნიერია და ყოველდღე სახალისოა!</p>
+        <p>შექმნილია სიყვარულით წიწილებისთვის 🧡</p>
+        <p>© 2025 წიწილას სამყარო - სადაც ყველა წიწილა ბედნიერია!</p>
     </div>
 </body>
 </html>
